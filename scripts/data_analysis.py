@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 conn = pyodbc.connect(
     "DRIVER={SQL Server};"
-    "SERVER=LAPTOP-9K51NHS7\\SQLEXPRESS;"
+    "SERVER={Server name;"
     "DATABASE=fraud_analysis;"
     "Trusted_Connection = yes;"
 )
@@ -21,7 +21,7 @@ query = "SELECT * FROM clean_fraud_data"
 df = pd.read_sql(query, conn)
 
 # Basic data check
-"""
+
 print("shape:", df.shape)
 print("Columns:", df.columns.tolist())
 print("data types:\n", df.dtypes)
@@ -181,9 +181,8 @@ plt.show()
 sns.histplot(df['transaction_amount'], bins=50)
 plt.title("Transaction Amount Distribution")
 plt.show()
-"""
 
-import os
+# code to create sample dataset
 
 df_sample = df.sample(n = 5000, random_state = 42)
 # Get project root directory
